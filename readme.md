@@ -14,7 +14,7 @@ $response = Travis\Bitstamp::balance(array(
 ));
 ```
 
-Just make sure you pass all the required fields.
+See [Bitstamp](https://www.bitstamp.net/api/) for full list of available methods.
 
 ## Todo
 
