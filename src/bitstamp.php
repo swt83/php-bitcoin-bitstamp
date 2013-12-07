@@ -7,12 +7,11 @@ class Bitstamp
     public static function __callStatic($method, $args)
     {
         // determine endpoint
-        list($ignore, $server) = explode('-', $api_key);
-        $endpoint = 'https://'.$server.'.api.mailchimp.com/1.3/?method='.self::camelcase($method);
+        $endpoint = 'https://www.bitstamp.net/api/ticker/';
 
         // build payload
-        $arguments = isset($args[0]) ? $args[0] : array();
-        $payload = urlencode(json_encode(array('apikey'=>$api_key) + $arguments));
+        #$arguments = isset($args[0]) ? $args[0] : array();
+        #$payload = urlencode(json_encode(array('apikey'=>$api_key) + $arguments));
 
         // setup curl request
         $ch = curl_init();
@@ -21,8 +20,6 @@ class Bitstamp
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
         $response = curl_exec($ch);
 
         // catch errors
@@ -41,10 +38,5 @@ class Bitstamp
             // return array
             return json_decode($response);
         }
-    }
-
-    private static function camelcase($str)
-    {
-        return lcfirst(preg_replace('/(^|_)(.)/e', "strtoupper('\\2')", strval($str)));
     }
 }
