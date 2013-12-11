@@ -2,8 +2,15 @@
 
 namespace Travis;
 
-class Bitstamp
-{
+class Bitstamp {
+
+    /**
+     * Constructor.
+     *
+     * @param   string  $method
+     * @param   array   $args
+     * @return  array
+     */
     public static function __callStatic($method, $args)
     {
         // determine endpoint
@@ -39,4 +46,5 @@ class Bitstamp
             return json_decode($response);
         }
     }
+
 }
