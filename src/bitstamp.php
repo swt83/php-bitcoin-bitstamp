@@ -14,15 +14,22 @@ class Bitstamp {
     public static function __callStatic($method, $args)
     {
         // determine endpoint
-        $endpoint = 'https://www.bitstamp.net/api/ticker/';
+        $endpoint = 'https://www.bitstamp.net/api/'.$method.'/';
 
-        // build payload
-        #$arguments = isset($args[0]) ? $args[0] : array();
-        #$payload = urlencode(json_encode(array('apikey'=>$api_key) + $arguments));
+        // build query
+        $arguments = isset($args[0]) ? $args[0] : array();
+        $query = '';
+        foreach ($arguments as $key => $value)
+        {
+            $query = $key.'='.urlencode($value).'&';
+        }
+
+        // build url
+        $url = $endpoint.'?'.$query;
 
         // setup curl request
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $endpoint);
+        curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
