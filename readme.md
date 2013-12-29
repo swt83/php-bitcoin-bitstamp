@@ -20,7 +20,7 @@ Some methods require authentication.  You are required to submit, at minimum, th
 $id = 'your_account_id';
 $key = 'your_api_key';
 $secret = 'your_api_secret_key';
-$nonce = time();
+$nonce = Bitstamp::nonce();
 
 $response = Bitstamp::balance(array(
     'key' => $key,
@@ -30,4 +30,4 @@ $response = Bitstamp::balance(array(
 ));
 ```
 
-This library contains a helper to aid in generating the signature.
+This library contains helpers ``Bitstamp::nonce()`` and ``Bitstamp::sign()`` to aid in generating the signature.

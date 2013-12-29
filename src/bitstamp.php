@@ -81,6 +81,20 @@ class Bitstamp {
     }
 
     /**
+     * Return a nonce value.
+     *
+     * @return  string
+     */
+    public static function nonce()
+    {
+        // Using microtime() instead of time() because of the
+        // need to chain successive API calls that would fail
+        // due to nonce duplication.
+
+        return str_replace('.', '', microtime(true));
+    }
+
+    /**
      * Return a signature string based on input vars.
      *
      * @param   string  $id
