@@ -91,7 +91,7 @@ class Bitstamp {
         // need to chain successive API calls that would fail
         // due to nonce duplication.
 
-        return str_replace('.', '', microtime(true));
+        return (int) 10000 * microtime(true);
     }
 
     /**
