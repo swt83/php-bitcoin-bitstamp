@@ -24,7 +24,7 @@ Some methods require authentication.  You are required to submit, at minimum, th
 $id = 'your_account_id';
 $key = 'your_api_key';
 $secret = 'your_api_secret_key';
-$nonce = Bitstamp::nonce();
+$nonce = Travis\Bitstamp::nonce();
 
 $response = Travis\Bitstamp::balance(array(
     'key' => $key,
