@@ -13,9 +13,9 @@
         "php": ">=5.3.0"
     },
     "autoload": {
-        "classmap": [
-            "src/bitstamp.php"
-        ]
+        "psr-0": {
+            "Travis\\": "src/"
+        }
     },
     "minimum-stability": "dev"
 }

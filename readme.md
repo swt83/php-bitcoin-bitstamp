@@ -2,12 +2,16 @@
 
 A PHP library for working w/ the Bitstamp API.
 
+## Install
+
+Normal install via Composer.
+
 ## Usage
 
 Call the desired method and pass the params as a single array.
 
 ```php
-$response = Bitstamp::ticker();
+$response = Travis\Bitstamp::ticker();
 ```
 
 See [Bitstamp](https://www.bitstamp.net/api/) for full list of available methods.
@@ -22,12 +26,12 @@ $key = 'your_api_key';
 $secret = 'your_api_secret_key';
 $nonce = Bitstamp::nonce();
 
-$response = Bitstamp::balance(array(
+$response = Travis\Bitstamp::balance(array(
     'key' => $key,
     'nonce' => $nonce,
-    'signature' => Bitstamp::sign($id, $key, $secret, $nonce),
+    'signature' => Travis\Bitstamp::sign($id, $key, $secret, $nonce),
     // ... any other arguments ...
 ));
 ```
 
-This library contains helpers ``Bitstamp::nonce()`` and ``Bitstamp::sign()`` to aid in generating the signature.
+This library contains helper methods ``nonce()`` and ``sign()`` to aid in generating the signature.
